@@ -18,11 +18,10 @@ int main() {
     //read in the words from the text file and store it
     ifstream myReadFile("words.txt");
     string line;
-    while (getLine(myReadFile, line))
+    while (getline(myReadFile, line))
     {
-        if(line.charAt(0) == '#')
+        if(line[0] == '#')
         {
-
         }
         else
         {

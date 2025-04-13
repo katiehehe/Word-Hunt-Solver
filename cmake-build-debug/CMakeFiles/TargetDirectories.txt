@@ -1,0 +1,3 @@
+/Users/axing/CLionProjects/Word-Hunt-Solver/cmake-build-debug/CMakeFiles/Word_Hunt_Solver.dir
+/Users/axing/CLionProjects/Word-Hunt-Solver/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/axing/CLionProjects/Word-Hunt-Solver/cmake-build-debug/CMakeFiles/rebuild_cache.dir
