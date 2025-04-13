@@ -91,6 +91,11 @@ public:
         return prefixHelper(current, prefix);
     }
 
+    ~Trie()
+    {
+        deleteTrie(root);
+    }
+
     void deleteTrie(TrieNode* node)
     {
         if (!node) return;
