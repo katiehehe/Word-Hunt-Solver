@@ -90,7 +90,15 @@ public:
         }
         return prefixHelper(current, prefix);
     }
-};
 
+    void deleteTrie(TrieNode* node)
+    {
+        if (!node) return;
+        for (int i = 0; i < 26; i++) {
+            deleteTrie(node->children[i]);
+        }
+        delete node;
+    }
+};
 
 #endif //WORD_HUNT_SOLVER_TRIE_H
