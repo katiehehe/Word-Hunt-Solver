@@ -5,6 +5,10 @@
 #ifndef WORD_HUNT_SOLVER_TRIE_H
 #define WORD_HUNT_SOLVER_TRIE_H
 
+#include <vector>
+#include <string>
+using namespace std;
+
 class Trie
 {
     struct TrieNode
@@ -21,7 +25,7 @@ public:
 
     bool insert(const string& word)
     {
-        if(search(word) == true)
+        if(search(word))
             return false;
         TrieNode* current = root;
         for(char c : word)
@@ -54,7 +58,7 @@ public:
 
     vector<string> prefixHelper(TrieNode* root, const string& prefix)
     {
-        vector<string> ret = {};
+        vector<string> ret;
         if(root->isWord)
         {
             ret.push_back(prefix);
@@ -79,7 +83,8 @@ public:
             int i = c - 'a';
             if(current->children[i] == nullptr)
             {
-                return {};
+                vector<string> hi;
+                return hi;
             }
             current = current->children[i];
         }
