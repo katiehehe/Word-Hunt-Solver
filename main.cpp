@@ -9,23 +9,21 @@
 #include <sstream>
 #include <iostream>
 #include <fstream>
+#include <Trie.h>
 
 using namespace std;
 
 int main() {
-    cout << "Hello World" << endl;
-    //testing
-    //read in the words from the text file and store it
     ifstream myReadFile("words.txt");
     string line;
-    while (getline(myReadFile, line))
+    Trie tree;
+    if(myReadFile.is_open())
     {
-        if(line[0] == '#')
-        {
-        }
-        else
-        {
-
+        while (getline(myReadFile, line)) {
+            if (line[0] == '#') {
+            } else {
+                tree.insert(line);
+            }
         }
     }
     //prompt user for their word search grid
