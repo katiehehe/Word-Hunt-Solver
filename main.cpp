@@ -9,7 +9,7 @@
 #include <sstream>
 #include <iostream>
 #include <fstream>
-#include <Trie.h>
+#include "Trie.h"
 
 using namespace std;
 
