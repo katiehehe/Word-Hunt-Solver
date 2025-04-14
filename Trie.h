@@ -30,7 +30,7 @@ public:
         TrieNode* current = root;
         for(char c : word)
         {
-            int i = c - 'a';
+            int i = tolower(c) - 'a';
             if(current->children[i] == nullptr)
             {
                 current->children[i] = new TrieNode();
