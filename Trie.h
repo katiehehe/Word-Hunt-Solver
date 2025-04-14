@@ -46,7 +46,7 @@ public:
         TrieNode* current = root;
         for(char c : word)
         {
-            int i = c - 'a';
+            int i = tolower(c) - 'a';
             if(current->children[i] == nullptr)
             {
                 return false;
@@ -80,7 +80,7 @@ public:
         TrieNode* current = root;
         for(char c : prefix)
         {
-            int i = c - 'a';
+            int i = tolower(c) - 'a';
             if(current->children[i] == nullptr)
             {
                 vector<string> hi;
