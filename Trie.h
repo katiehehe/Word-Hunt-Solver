@@ -27,6 +27,11 @@ public:
     {
         if(search(word))
             return false;
+        for (char c : word) {
+            if (!isalpha(c)) {
+                return false;
+            }
+        }
         TrieNode* current = root;
         for(char c : word)
         {
