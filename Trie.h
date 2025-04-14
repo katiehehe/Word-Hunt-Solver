@@ -27,10 +27,15 @@ public:
     {
         if(search(word))
             return false;
+        for (char c : word) {
+            if (!isalpha(c)) {
+                return false;
+            }
+        }
         TrieNode* current = root;
         for(char c : word)
         {
-            int i = c - 'a';
+            int i = tolower(c) - 'a';
             if(current->children[i] == nullptr)
             {
                 current->children[i] = new TrieNode();
@@ -46,7 +51,7 @@ public:
         TrieNode* current = root;
         for(char c : word)
         {
-            int i = c - 'a';
+            int i = tolower(c) - 'a';
             if(current->children[i] == nullptr)
             {
                 return false;
@@ -80,7 +85,7 @@ public:
         TrieNode* current = root;
         for(char c : prefix)
         {
-            int i = c - 'a';
+            int i = tolower(c) - 'a';
             if(current->children[i] == nullptr)
             {
                 vector<string> hi;
@@ -90,7 +95,20 @@ public:
         }
         return prefixHelper(current, prefix);
     }
-};
 
+    ~Trie()
+    {
+        deleteTrie(root);
+    }
+
+    void deleteTrie(TrieNode* node)
+    {
+        if (!node) return;
+        for (int i = 0; i < 26; i++) {
+            deleteTrie(node->children[i]);
+        }
+        delete node;
+    }
+};
 
 #endif //WORD_HUNT_SOLVER_TRIE_H
