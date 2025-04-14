@@ -7,6 +7,8 @@
 
 #include <vector>
 #include <string>
+#include <locale>
+#include <codecvt>
 using namespace std;
 
 class Trie
@@ -25,13 +27,13 @@ public:
 
     bool insert(const string& word)
     {
-        if(search(word))
-            return false;
-        for (char c : word) {
+        for (const char c : word) {
             if (!isalpha(c)) {
                 return false;
             }
         }
+        if(search(word))
+            return false;
         TrieNode* current = root;
         for(char c : word)
         {
