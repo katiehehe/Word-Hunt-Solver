@@ -27,6 +27,11 @@ public:
     {
         if(search(word))
             return false;
+        for (char c : word) {
+            if (!isalpha(c)) {
+                return false;
+            }
+        }
         TrieNode* current = root;
         for(char c : word)
         {
@@ -56,26 +61,27 @@ public:
         return current->isWord;
     }
 
-    vector<string> prefixHelper(TrieNode* root, const string& prefix)
+    bool prefixHelper(TrieNode* root, const string& prefix)
     {
-        vector<string> ret;
         if(root->isWord)
         {
-            ret.push_back(prefix);
+            return true;
         }
         for(int i = 0; i < 26; ++i)
         {
             if(root->children[i] != nullptr)
             {
                 char c = 'a' + i;
-                vector<string> v = prefixHelper(root->children[i], prefix + c);
-                ret.insert(ret.end(), v.begin(), v.end());
+                if(prefixHelper(root->children[i], prefix + c))
+                {
+                    return true;
+                }
             }
         }
-        return ret;
+        return false;
     }
 
-    vector<string> prefix(const string& prefix)
+   bool prefix(const string& prefix)
     {
         TrieNode* current = root;
         for(char c : prefix)
@@ -83,8 +89,7 @@ public:
             int i = tolower(c) - 'a';
             if(current->children[i] == nullptr)
             {
-                vector<string> hi;
-                return hi;
+                return false;
             }
             current = current->children[i];
         }
