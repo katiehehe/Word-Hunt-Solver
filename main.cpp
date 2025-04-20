@@ -86,7 +86,7 @@ int main() {
     if(myReadFile.is_open())
     {
         while (getline(myReadFile, line)) {
-            cout << line << endl;
+            //cout << line << endl;
             if (line[0] == '#') {
             } else {
                 if (line.size() > 2) {
