@@ -133,7 +133,7 @@ int main() {
     {
         for(int j = 0; j < size; ++j)
         {
-            bfs(words, grid, i, j, tree);
+            bfs(words2, grid, i, j, tree);
         }
     }
     for (const string& word : words2)
