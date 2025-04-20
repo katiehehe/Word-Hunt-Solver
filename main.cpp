@@ -11,6 +11,7 @@
 #include <fstream>
 #include <queue>
 #include <set>
+#include <tuple>
 
 #include "Trie.h"
 
@@ -42,7 +43,42 @@ void dfs(set<string>& words, vector<vector<char> >& grid, int row, int col, stri
 
     visited[row][col] = false;
 }
+void bfs(set<string>& words, vector<vector<char> >& grid, int row, int col, Trie& tree)
+{
+    int size = grid.size();
+    int xChange[] = {1, 1, 0, -1, -1, -1, 0, 1};
+    int yChange[] = {0, 1, 1, 1, 0, -1, -1, -1};
 
+    queue<tuple<int, int, string, vector<vector<bool> > > > q;
+    vector<vector<bool> > visited(size, vector<bool>(size, false));
+    string s = "";
+    s = s + grid[row][col];
+    visited[row][col] = true;
+    q.push({row, col, s, visited});
+
+    while(!q.empty())
+    {
+        auto[r, c, newString, invisit] = q.front();
+        q.pop();
+        if(newString.length() >= 3 && tree.search(newString))
+        {
+            words.insert(newString);
+        }
+        for(int i = 0; i < 8; ++i)
+        {
+            if(r + xChange[i] >= 0 && r + xChange[i] < grid.size() && c + yChange[i] >= 0 && c + yChange[i] < grid.size() && !visited[r + xChange[i]][c + yChange[i]])
+            {
+                string newString2 = newString + grid[r + xChange[i]][c + yChange[i]];
+                if(!tree.prefix(newString2))
+                {
+                    vector<vector<bool> > newVisited = invisit;
+                    newVisited[r + xChange[i]][c + yChange[i]] = true;
+                    q.push({r + xChange[i], c + yChange[i], newString2, newVisited});
+                }
+            }
+        }
+    }
+}
 int main() {
     ifstream myReadFile("words.txt");
     string line;
