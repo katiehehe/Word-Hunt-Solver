@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Word_Hunt_Solver"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/axing/CLionProjects/Word-Hunt-Solver/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/axing/CLionProjects/Word-Hunt-Solver/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/axing/CLionProjects/Word-Hunt-Solver/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/axing/CLionProjects/Word-Hunt-Solver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/axing/CLionProjects/Word-Hunt-Solver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Word_Hunt_Solver">
+				<Option output="/Users/axing/CLionProjects/Word-Hunt-Solver/cmake-build-debug/Word_Hunt_Solver" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/axing/CLionProjects/Word-Hunt-Solver/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/axing/CLionProjects/Word-Hunt-Solver/."/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/axing/CLionProjects/Word-Hunt-Solver/cmake-build-debug/Makefile&quot;  VERBOSE=1 Word_Hunt_Solver"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/axing/CLionProjects/Word-Hunt-Solver/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/axing/CLionProjects/Word-Hunt-Solver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/axing/CLionProjects/Word-Hunt-Solver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Word_Hunt_Solver/fast">
+				<Option output="/Users/axing/CLionProjects/Word-Hunt-Solver/cmake-build-debug/Word_Hunt_Solver" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/axing/CLionProjects/Word-Hunt-Solver/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/axing/CLionProjects/Word-Hunt-Solver/."/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/axing/CLionProjects/Word-Hunt-Solver/cmake-build-debug/Makefile&quot;  VERBOSE=1 Word_Hunt_Solver/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/axing/CLionProjects/Word-Hunt-Solver/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/axing/CLionProjects/Word-Hunt-Solver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/axing/CLionProjects/Word-Hunt-Solver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/axing/CLionProjects/Word-Hunt-Solver/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/axing/CLionProjects/Word-Hunt-Solver/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/axing/CLionProjects/Word-Hunt-Solver/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/axing/CLionProjects/Word-Hunt-Solver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/axing/CLionProjects/Word-Hunt-Solver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/axing/CLionProjects/Word-Hunt-Solver/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/axing/CLionProjects/Word-Hunt-Solver/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/axing/CLionProjects/Word-Hunt-Solver/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/axing/CLionProjects/Word-Hunt-Solver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/axing/CLionProjects/Word-Hunt-Solver/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/axing/CLionProjects/Word-Hunt-Solver/Trie.h">
+			<Option target="Word_Hunt_Solver"/>
+		</Unit>
+		<Unit filename="/Users/axing/CLionProjects/Word-Hunt-Solver/main.cpp">
+			<Option target="Word_Hunt_Solver"/>
+		</Unit>
+		<Unit filename="/Users/axing/CLionProjects/Word-Hunt-Solver/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
