@@ -12,6 +12,7 @@
 #include <queue>
 #include <set>
 #include <tuple>
+#include <chrono>
 
 #include "Trie.h"
 
@@ -114,6 +115,8 @@ int main() {
         grid.push_back(row);
     }
 
+    auto start = std::chrono::steady_clock::now();
+
     set<string> words;
     vector<vector<bool> > visited(size, vector<bool>(size, false));
     for(int i = 0; i < size; ++i)
@@ -128,6 +131,12 @@ int main() {
         cout << word << endl;
     }
     cout << endl;
+
+    auto end = std::chrono::steady_clock::now();
+    auto duration = end-start;
+
+    start = std::chrono::steady_clock::now();
+
     set<string> words2;
     for(int i = 0; i < size; ++i)
     {
@@ -140,5 +149,10 @@ int main() {
     {
         cout << word << endl;
     }
-    //cout << words.size() << " " << words2.size() << endl;
+
+    end = std::chrono::steady_clock::now();
+    auto duration2 = end-start;
+
+    cout << "Duration for DFS: " << duration.count() << endl;
+    cout << "Duration for BFS: " << duration2.count() << endl;
 }

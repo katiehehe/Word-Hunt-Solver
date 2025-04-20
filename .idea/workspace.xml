@@ -28,10 +28,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="35899d30-c0c4-410e-850f-632bb5cce4cd" name="Changes" comment="added bfs">
-      <change beforePath="$PROJECT_DIR$/.idea/Word-Hunt-Solver.iml" beforeDir="false" />
+    <list default="true" id="35899d30-c0c4-410e-850f-632bb5cce4cd" name="Changes" comment="fixed bugs in bfs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,7 +208,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745173156906</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="fixed bugs in bfs">
+      <option name="closed" value="true" />
+      <created>1745182071972</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1745182071972</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -233,6 +239,7 @@
     <MESSAGE value="added cmakelists.txt" />
     <MESSAGE value="changed configuration" />
     <MESSAGE value="added bfs" />
-    <option name="LAST_COMMIT_MESSAGE" value="added bfs" />
+    <MESSAGE value="fixed bugs in bfs" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed bugs in bfs" />
   </component>
 </project>
