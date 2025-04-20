@@ -25,8 +25,8 @@ void dfs(set<string>& words, vector<vector<char> >& grid, int row, int col, stri
         return;
     }
     visited[row][col] = true;
-    cout << "row: " << row << " and col: " << col << endl;
-    cout << "current string: " << s << endl;
+    //cout << "row: " << row << " and col: " << col << endl;
+    //cout << "current string: " << s << endl;
     if(newString.length() >= 3 && tree.search(newString))
     {
         words.insert(newString);
@@ -66,10 +66,10 @@ void bfs(set<string>& words, vector<vector<char> >& grid, int row, int col, Trie
         }
         for(int i = 0; i < 8; ++i)
         {
-            if(r + xChange[i] >= 0 && r + xChange[i] < grid.size() && c + yChange[i] >= 0 && c + yChange[i] < grid.size() && !visited[r + xChange[i]][c + yChange[i]])
+            if(r + xChange[i] >= 0 && r + xChange[i] < grid.size() && c + yChange[i] >= 0 && c + yChange[i] < grid.size() && !invisit[r + xChange[i]][c + yChange[i]])
             {
                 string newString2 = newString + grid[r + xChange[i]][c + yChange[i]];
-                if(!tree.prefix(newString2))
+                if(tree.prefix(newString2))
                 {
                     vector<vector<bool> > newVisited = invisit;
                     newVisited[r + xChange[i]][c + yChange[i]] = true;
@@ -127,7 +127,7 @@ int main() {
     {
         cout << word << endl;
     }
-
+    cout << endl;
     set<string> words2;
     for(int i = 0; i < size; ++i)
     {
@@ -140,5 +140,5 @@ int main() {
     {
         cout << word << endl;
     }
-    //test
+    //cout << words.size() << " " << words2.size() << endl;
 }
