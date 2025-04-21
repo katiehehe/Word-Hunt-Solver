@@ -30,7 +30,9 @@ void dfs(set<string>& words, vector<vector<char> >& grid, int row, int col, stri
     //cout << "current string: " << s << endl;
     if(newString.length() >= 3 && tree.search(newString))
     {
+        int size = words.size();
         words.insert(newString);
+        if (words.size() != size) {cout << newString << endl;}
     }
     int xChange[] = {1, 1, 0, -1, -1, -1, 0, 1};
     int yChange[] = {0, 1, 1, 1, 0, -1, -1, -1};
@@ -63,7 +65,9 @@ void bfs(set<string>& words, vector<vector<char> >& grid, int row, int col, Trie
         q.pop();
         if(newString.length() >= 3 && tree.search(newString))
         {
+            int size = words.size();
             words.insert(newString);
+            if (words.size() != size) {cout << newString << endl;}
         }
         for(int i = 0; i < 8; ++i)
         {
@@ -117,6 +121,7 @@ int main() {
 
     auto start = std::chrono::steady_clock::now();
 
+    cout << "BFS words: " << endl;
     set<string> words;
     vector<vector<bool> > visited(size, vector<bool>(size, false));
     for(int i = 0; i < size; ++i)
@@ -126,17 +131,20 @@ int main() {
             dfs(words, grid, i, j, "", visited, tree);
         }
     }
+    /*
     for (const string& word : words)
     {
         cout << word << endl;
     }
     cout << endl;
+    */
 
     auto end = std::chrono::steady_clock::now();
     auto duration = end-start;
 
     start = std::chrono::steady_clock::now();
 
+    cout << "DFS words: " << endl;
     set<string> words2;
     for(int i = 0; i < size; ++i)
     {
@@ -145,10 +153,12 @@ int main() {
             bfs(words2, grid, i, j, tree);
         }
     }
+    /*
     for (const string& word : words2)
     {
         cout << word << endl;
     }
+    */
 
     end = std::chrono::steady_clock::now();
     auto duration2 = end-start;
