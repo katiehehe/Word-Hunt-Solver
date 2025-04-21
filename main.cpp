@@ -133,7 +133,7 @@ int main() {
         grid.push_back(row);
     }
 
-    auto start = std::chrono::steady_clock::now();
+    auto start = chrono::steady_clock::now();
 
     cout << "DFS words: " << endl;
     set<string> words;
@@ -153,10 +153,10 @@ int main() {
     cout << endl;
     */
 
-    auto end = std::chrono::steady_clock::now();
-    auto duration = end-start;
+    auto end = chrono::steady_clock::now();
+    auto duration = chrono::duration_cast<chrono::milliseconds>(end-start);
 
-    start = std::chrono::steady_clock::now();
+    start = chrono::steady_clock::now();
 
     cout << "BFS words: " << endl;
     set<string> words2;
@@ -174,9 +174,9 @@ int main() {
     }
     */
 
-    end = std::chrono::steady_clock::now();
-    auto duration2 = end-start;
+    end = chrono::steady_clock::now();
+    auto duration2 = chrono::duration_cast<chrono::milliseconds>(end-start);
 
-    cout << "Duration for DFS: " << duration.count() << endl;
-    cout << "Duration for BFS: " << duration2.count() << endl;
+    cout << "Duration for DFS: " << duration.count() << " milliseconds" << endl;
+    cout << "Duration for BFS: " << duration2.count() << " milliseconds" << endl;
 }
