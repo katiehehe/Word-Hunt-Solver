@@ -52,12 +52,26 @@ void bfs(set<string>& words, vector<vector<char> >& grid, int row, int col, Trie
     int xChange[] = {1, 1, 0, -1, -1, -1, 0, 1};
     int yChange[] = {0, 1, 1, 1, 0, -1, -1, -1};
 
-    queue<tuple<int, int, string, vector<vector<bool> > > > q;
+    struct QueueElement{
+        int row;
+        int col;
+        string s;
+        vector<vector<bool> > visited;
+
+        QueueElement(int r, int c, string st, vector<vector<bool> >& array)
+        {
+            row = r;
+            col = c;
+            s = st;
+            visited = array;
+        }
+    };
+    queue<QueueElement> q;
     vector<vector<bool> > visited(size, vector<bool>(size, false));
     string s = "";
     s = s + grid[row][col];
     visited[row][col] = true;
-    q.push({row, col, s, visited});
+    q.push(QueueElement(row, col, s, visited));
 
     while(!q.empty())
     {
@@ -78,7 +92,7 @@ void bfs(set<string>& words, vector<vector<char> >& grid, int row, int col, Trie
                 {
                     vector<vector<bool> > newVisited = invisit;
                     newVisited[r + xChange[i]][c + yChange[i]] = true;
-                    q.push({r + xChange[i], c + yChange[i], newString2, newVisited});
+                    q.push(QueueElement(r + xChange[i], c + yChange[i], newString2, newVisited));
                 }
             }
         }
