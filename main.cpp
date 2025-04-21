@@ -135,7 +135,7 @@ int main() {
 
     auto start = std::chrono::steady_clock::now();
 
-    cout << "BFS words: " << endl;
+    cout << "DFS words: " << endl;
     set<string> words;
     vector<vector<bool> > visited(size, vector<bool>(size, false));
     for(int i = 0; i < size; ++i)
@@ -158,7 +158,7 @@ int main() {
 
     start = std::chrono::steady_clock::now();
 
-    cout << "DFS words: " << endl;
+    cout << "BFS words: " << endl;
     set<string> words2;
     for(int i = 0; i < size; ++i)
     {
