@@ -63,10 +63,10 @@ public:
         return current->isWord;
     }
 
-   bool prefix(const string& prefix)
+   bool prefix(const string& prefix1)
     {
         TrieNode* current = root;
-        for(char c : prefix)
+        for(char c : prefix1)
         {
             int i = tolower(c) - 'a';
             if(current->children[i] == nullptr)
