@@ -120,6 +120,7 @@ int main() {
     cout << "Input size of square grid: " << endl;
     int size;
     cin >> size;
+    cout << endl;
     vector<vector<char> > grid;
     cout << "Please enter grid: " << endl;
 
@@ -132,7 +133,7 @@ int main() {
         }
         grid.push_back(row);
     }
-
+    cout << endl;
     auto start = chrono::steady_clock::now();
 
     cout << "DFS words: " << endl;
@@ -152,6 +153,7 @@ int main() {
     }
     cout << endl;
     */
+    cout << endl;
 
     auto end = chrono::steady_clock::now();
     auto duration = chrono::duration_cast<chrono::milliseconds>(end-start);
