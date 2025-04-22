@@ -18,7 +18,8 @@
 
 using namespace std;
 
-void dfs(set<string>& words, vector<vector<char> >& grid, int row, int col, string s, vector<vector<bool> >& visited, Trie& tree)
+void dfs(set<string>& words, vector<vector<char> >& grid, int row, int col, string s,
+    vector<vector<bool> >& visited, Trie& tree, string response, map<int, vector<string>>& longest, int& length)
 {
     string newString = s + grid[row][col];
     if(!tree.prefix(newString))
@@ -26,13 +27,22 @@ void dfs(set<string>& words, vector<vector<char> >& grid, int row, int col, stri
         return;
     }
     visited[row][col] = true;
-    //cout << "row: " << row << " and col: " << col << endl;
-    //cout << "current string: " << s << endl;
     if(newString.length() >= 3 && tree.search(newString))
     {
         int size = words.size();
         words.insert(newString);
-        if (words.size() != size) {cout << newString << endl;}
+        if (response == "1" && words.size() != size) {cout << newString << endl;}
+        else if (response == "2") {
+            int len = newString.length();
+            if (longest.find(newString.length()) == longest.end()) {
+                longest[len] = {};
+                longest[len].push_back(newString);
+                length = max(length, len);
+            }
+            else if (words.size() != size) {
+                longest[len].push_back(newString);
+            }
+        }
     }
     int xChange[] = {1, 1, 0, -1, -1, -1, 0, 1};
     int yChange[] = {0, 1, 1, 1, 0, -1, -1, -1};
@@ -40,13 +50,14 @@ void dfs(set<string>& words, vector<vector<char> >& grid, int row, int col, stri
     {
         if(row + xChange[i] >= 0 && row + xChange[i] < grid.size() && col + yChange[i] >= 0 && col + yChange[i] < grid.size() && !visited[row + xChange[i]][col + yChange[i]])
         {
-            dfs(words, grid, row + xChange[i], col + yChange[i], newString, visited, tree);
+            dfs(words, grid, row + xChange[i], col + yChange[i], newString, visited, tree, response, longest, length);
         }
     }
 
     visited[row][col] = false;
 }
-void bfs(set<string>& words, vector<vector<char> >& grid, int row, int col, Trie& tree)
+void bfs(set<string>& words, vector<vector<char> >& grid, int row, int col, Trie& tree,
+    string response, map<int, vector<string>>& longest, int& length)
 {
     int size = grid.size();
     int xChange[] = {1, 1, 0, -1, -1, -1, 0, 1};
@@ -81,7 +92,18 @@ void bfs(set<string>& words, vector<vector<char> >& grid, int row, int col, Trie
         {
             int size = words.size();
             words.insert(newString);
-            if (words.size() != size) {cout << newString << endl;}
+            if (response == "1" && words.size() != size) {cout << newString << endl;}
+            else if (response == "2") {
+                int len = newString.length();
+                if (longest.find(newString.length()) == longest.end()) {
+                    longest[len] = {};
+                    longest[len].push_back(newString);
+                    length = max(length, len);
+                }
+                else if (words.size() != size) {
+                    longest[len].push_back(newString);
+                }
+            }
         }
         for(int i = 0; i < 8; ++i)
         {
@@ -105,7 +127,6 @@ int main() {
     if(myReadFile.is_open())
     {
         while (getline(myReadFile, line)) {
-            //cout << line << endl;
             if (line[0] == '#') {
             } else {
                 if (line.size() > 2) {
@@ -133,50 +154,72 @@ int main() {
         grid.push_back(row);
     }
 
+    cout << "Please select program number: " << endl;
+    cout << "1. Print all words" << endl;
+    cout << "2. Print longest words" << endl;
+
+    string response;
+    cin >> response;
+
     auto start = chrono::steady_clock::now();
 
     cout << "DFS words: " << endl;
     set<string> words;
+    map<int, vector<string>> longest;
     vector<vector<bool> > visited(size, vector<bool>(size, false));
+    int length = 0;
     for(int i = 0; i < size; ++i)
     {
         for(int j = 0; j < size; ++j)
         {
-            dfs(words, grid, i, j, "", visited, tree);
+            dfs(words, grid, i, j, "", visited, tree, response, longest, length);
         }
     }
-    /*
-    for (const string& word : words)
-    {
-        cout << word << endl;
+
+    int currLength = length;
+    if (response == "2") {
+        while (currLength > max(3, length-3)) {
+            vector<string> longestWords = longest[currLength];
+            for (auto it = longestWords.begin(); it != longestWords.end(); it++) {
+                cout << *it << endl;
+            }
+            currLength--;
+        }
     }
-    cout << endl;
-    */
 
     auto end = chrono::steady_clock::now();
     auto duration = chrono::duration_cast<chrono::milliseconds>(end-start);
 
     start = chrono::steady_clock::now();
 
+    cout << endl;
     cout << "BFS words: " << endl;
     set<string> words2;
+    map<int, vector<string>> longest2;
+    length = 0;
     for(int i = 0; i < size; ++i)
     {
         for(int j = 0; j < size; ++j)
         {
-            bfs(words2, grid, i, j, tree);
+            bfs(words2, grid, i, j, tree, response, longest2, length);
         }
     }
-    /*
-    for (const string& word : words2)
-    {
-        cout << word << endl;
+
+    currLength = length;
+    if (response == "2") {
+        while (currLength > max(3, length-3)) {
+            vector<string> longestWords = longest[currLength];
+            for (auto it = longestWords.begin(); it != longestWords.end(); it++) {
+                cout << *it << endl;
+            }
+            currLength--;
+        }
     }
-    */
 
     end = chrono::steady_clock::now();
     auto duration2 = chrono::duration_cast<chrono::milliseconds>(end-start);
 
+    cout << endl;
     cout << "Duration for DFS: " << duration.count() << " milliseconds" << endl;
     cout << "Duration for BFS: " << duration2.count() << " milliseconds" << endl;
 }
