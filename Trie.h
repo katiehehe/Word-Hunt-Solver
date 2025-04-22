@@ -63,26 +63,6 @@ public:
         return current->isWord;
     }
 
-    bool prefixHelper(TrieNode* root, const string& prefix)
-    {
-        if(root->isWord)
-        {
-            return true;
-        }
-        for(int i = 0; i < 26; ++i)
-        {
-            if(root->children[i] != nullptr)
-            {
-                char c = 'a' + i;
-                if(prefixHelper(root->children[i], prefix + c))
-                {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
    bool prefix(const string& prefix)
     {
         TrieNode* current = root;
@@ -95,7 +75,7 @@ public:
             }
             current = current->children[i];
         }
-        return prefixHelper(current, prefix);
+        return true;
     }
 
     ~Trie()
