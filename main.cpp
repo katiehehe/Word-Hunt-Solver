@@ -30,7 +30,9 @@ void dfs(set<string>& words, vector<vector<char> >& grid, int row, int col, stri
     //cout << "current string: " << s << endl;
     if(newString.length() >= 3 && tree.search(newString))
     {
+        int size = words.size();
         words.insert(newString);
+        if (words.size() != size) {cout << newString << endl;}
     }
     int xChange[] = {1, 1, 0, -1, -1, -1, 0, 1};
     int yChange[] = {0, 1, 1, 1, 0, -1, -1, -1};
@@ -50,12 +52,26 @@ void bfs(set<string>& words, vector<vector<char> >& grid, int row, int col, Trie
     int xChange[] = {1, 1, 0, -1, -1, -1, 0, 1};
     int yChange[] = {0, 1, 1, 1, 0, -1, -1, -1};
 
-    queue<tuple<int, int, string, vector<vector<bool> > > > q;
+    struct QueueElement{
+        int row;
+        int col;
+        string s;
+        vector<vector<bool> > visited;
+
+        QueueElement(int r, int c, string st, vector<vector<bool> >& array)
+        {
+            row = r;
+            col = c;
+            s = st;
+            visited = array;
+        }
+    };
+    queue<QueueElement> q;
     vector<vector<bool> > visited(size, vector<bool>(size, false));
     string s = "";
     s = s + grid[row][col];
     visited[row][col] = true;
-    q.push({row, col, s, visited});
+    q.push(QueueElement(row, col, s, visited));
 
     while(!q.empty())
     {
@@ -63,7 +79,9 @@ void bfs(set<string>& words, vector<vector<char> >& grid, int row, int col, Trie
         q.pop();
         if(newString.length() >= 3 && tree.search(newString))
         {
+            int size = words.size();
             words.insert(newString);
+            if (words.size() != size) {cout << newString << endl;}
         }
         for(int i = 0; i < 8; ++i)
         {
@@ -74,7 +92,7 @@ void bfs(set<string>& words, vector<vector<char> >& grid, int row, int col, Trie
                 {
                     vector<vector<bool> > newVisited = invisit;
                     newVisited[r + xChange[i]][c + yChange[i]] = true;
-                    q.push({r + xChange[i], c + yChange[i], newString2, newVisited});
+                    q.push(QueueElement(r + xChange[i], c + yChange[i], newString2, newVisited));
                 }
             }
         }
@@ -115,8 +133,9 @@ int main() {
         grid.push_back(row);
     }
 
-    auto start = std::chrono::steady_clock::now();
+    auto start = chrono::steady_clock::now();
 
+    cout << "DFS words: " << endl;
     set<string> words;
     vector<vector<bool> > visited(size, vector<bool>(size, false));
     for(int i = 0; i < size; ++i)
@@ -126,17 +145,20 @@ int main() {
             dfs(words, grid, i, j, "", visited, tree);
         }
     }
+    /*
     for (const string& word : words)
     {
         cout << word << endl;
     }
     cout << endl;
+    */
 
-    auto end = std::chrono::steady_clock::now();
-    auto duration = end-start;
+    auto end = chrono::steady_clock::now();
+    auto duration = chrono::duration_cast<chrono::milliseconds>(end-start);
 
-    start = std::chrono::steady_clock::now();
+    start = chrono::steady_clock::now();
 
+    cout << "BFS words: " << endl;
     set<string> words2;
     for(int i = 0; i < size; ++i)
     {
@@ -145,14 +167,16 @@ int main() {
             bfs(words2, grid, i, j, tree);
         }
     }
+    /*
     for (const string& word : words2)
     {
         cout << word << endl;
     }
+    */
 
-    end = std::chrono::steady_clock::now();
-    auto duration2 = end-start;
+    end = chrono::steady_clock::now();
+    auto duration2 = chrono::duration_cast<chrono::milliseconds>(end-start);
 
-    cout << "Duration for DFS: " << duration.count() << endl;
-    cout << "Duration for BFS: " << duration2.count() << endl;
+    cout << "Duration for DFS: " << duration.count() << " milliseconds" << endl;
+    cout << "Duration for BFS: " << duration2.count() << " milliseconds" << endl;
 }

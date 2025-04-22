@@ -28,8 +28,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="35899d30-c0c4-410e-850f-632bb5cce4cd" name="Changes" comment="fixed bugs in bfs">
+    <list default="true" id="35899d30-c0c4-410e-850f-632bb5cce4cd" name="Changes" comment="implemented std::chrono to track time of BFS and DFS">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,7 +217,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745182071972</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="implemented std::chrono to track time of BFS and DFS">
+      <option name="closed" value="true" />
+      <created>1745188453397</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1745188453397</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -240,6 +249,7 @@
     <MESSAGE value="changed configuration" />
     <MESSAGE value="added bfs" />
     <MESSAGE value="fixed bugs in bfs" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed bugs in bfs" />
+    <MESSAGE value="implemented std::chrono to track time of BFS and DFS" />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented std::chrono to track time of BFS and DFS" />
   </component>
 </project>
