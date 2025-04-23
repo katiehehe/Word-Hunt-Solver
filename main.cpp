@@ -19,7 +19,7 @@
 using namespace std;
 
 void dfs(set<string>& words, vector<vector<char> >& grid, int row, int col, string s,
-    vector<vector<bool> >& visited, Trie& tree, string response, map<int, vector<string>>& longest, int& length)
+    vector<vector<bool> >& visited, Trie& tree, string response, map<int, vector<string> >& longest, int& length)
 {
     string newString = s + grid[row][col];
     if(!tree.prefix(newString))
@@ -35,7 +35,7 @@ void dfs(set<string>& words, vector<vector<char> >& grid, int row, int col, stri
         else if (response == "2") {
             int len = newString.length();
             if (longest.find(newString.length()) == longest.end()) {
-                longest[len] = {};
+                longest[len] = vector<string>();
                 longest[len].push_back(newString);
                 length = max(length, len);
             }
@@ -57,7 +57,7 @@ void dfs(set<string>& words, vector<vector<char> >& grid, int row, int col, stri
     visited[row][col] = false;
 }
 void bfs(set<string>& words, vector<vector<char> >& grid, int row, int col, Trie& tree,
-    string response, map<int, vector<string>>& longest, int& length)
+    string response, map<int, vector<string> >& longest, int& length)
 {
     int size = grid.size();
     int xChange[] = {1, 1, 0, -1, -1, -1, 0, 1};
@@ -96,7 +96,7 @@ void bfs(set<string>& words, vector<vector<char> >& grid, int row, int col, Trie
             else if (response == "2") {
                 int len = newString.length();
                 if (longest.find(newString.length()) == longest.end()) {
-                    longest[len] = {};
+                    longest[len] =  vector<string>();
                     longest[len].push_back(newString);
                     length = max(length, len);
                 }
@@ -165,7 +165,7 @@ int main() {
 
     cout << "DFS words: " << endl;
     set<string> words;
-    map<int, vector<string>> longest;
+    map<int, vector<string> > longest;
     vector<vector<bool> > visited(size, vector<bool>(size, false));
     int length = 0;
     for(int i = 0; i < size; ++i)
@@ -195,7 +195,7 @@ int main() {
     cout << endl;
     cout << "BFS words: " << endl;
     set<string> words2;
-    map<int, vector<string>> longest2;
+    map<int, vector<string> > longest2;
     length = 0;
     for(int i = 0; i < size; ++i)
     {
